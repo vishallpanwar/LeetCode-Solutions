@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int start=0;
+        int end=nums.size()-1;
+
+        while(start<=end){
+
+            int mid=(start+end)/2;
+
+            // If middle element = target, then return middle element
+            if(nums[mid]==target)
+            return mid;
+            
+            // If middle element < target, then move start one ahead of mid
+            else if(nums[mid]<target)
+            start=mid+1;
+            
+            // If middle element > target, then move end one below of mid
+            else
+            end=mid-1;
+            
+        }
+        
+        // If all above conditions are not satisfied, simply return 1
+        // (Given in the description itself)
+        
+        return -1;
+    }
+};
+
