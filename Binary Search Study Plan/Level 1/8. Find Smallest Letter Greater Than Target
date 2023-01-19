@@ -1,0 +1,23 @@
+class Solution {
+public:
+    char nextGreatestLetter(vector<char>& letters, char target) {
+        int start = 0;
+        int end = letters.size() - 1;
+        
+        // Loop will iterate till start<=end
+        while( start <= end){
+            int mid = start + (end - start) / 2;
+
+            // If target<mid, then move end one point below of mid
+            if(letters[mid]>target){
+                end = mid - 1;
+            }
+            
+            // If target>mid, then move start one point ahead of mid
+            else {
+                start = mid + 1;
+            }
+        }
+        return letters[start % letters.size()];
+    }
+};
