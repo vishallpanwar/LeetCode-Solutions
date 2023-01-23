@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int findKthPositive(vector<int>& arr, int k) 
+    {
+        int n=arr.size();
+        int start=0,end=n-1;
+        while(start<=end)
+        {
+            int mid=(end-start)/2+start;
+            int x=arr[mid]-mid;//will give no. of missing elements
+            if(x>k)
+            end=mid-1;
+
+            else
+            start=mid+1;
+        }
+        return k+start;   
+    }
+};
