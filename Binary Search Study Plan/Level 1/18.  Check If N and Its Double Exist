@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool checkIfExist(vector<int>& arr) {
+         for (int l = 0; l < arr.size(); l++)
+      {
+            if (arr[l] % 2 == 0)
+            {
+                  for (int m = 0; m < arr.size(); m++)
+                  {
+                        if ((arr[l] / 2) == arr[m]&&l!=m)
+                        {
+                              return true;
+                        }
+                  }
+            }
+      }
+
+      return false;   
+    }
+};
