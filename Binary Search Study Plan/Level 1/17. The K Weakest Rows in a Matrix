@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
+        vector<pair<int,int>> solders;
+        solders.reserve(mat.size());
+        for (int row = 0; row < mat.size(); row++) {
+            int low = 0, high = mat[row].size()-1;
+            while (low <= high) {
+                int med = low + ((high - low) >> 1);
+                if (mat[row][med]) low = med + 1;
+                else high = med - 1;
+            }            
+            solders.push_back(make_pair(row, low));
+        }
+
+        vector<int> result;
+        result.reserve(k);
+        for (int i = 0; i < k; i++) {
+            for (int j = solders.size() - 1; j > i; j--) {
+                if (solders[j -1].second > solders[j].second) swap(solders[j], solders[j -1]);
+            }
+            result.push_back(solders[i].first);
+        }
+
+        return result;
+    }
+};
